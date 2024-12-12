@@ -1,6 +1,8 @@
 from django.db import models
 
 # Create your models here.
-class Article(models.Model):
+class login_manage(models.Model):
     id = models.TextField(primary_key=True)
     password = models.CharField(max_length=50)
+    created_at= models.DateTimeField(auto_now_add = True) # add는 생성때 추가
+    updated_at = models.DateTimeField(auto_now = True)
