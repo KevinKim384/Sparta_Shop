@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'user_page',
     'like_page',
     'log_in',
+    'main_page'
 ]
 
 MIDDLEWARE = [

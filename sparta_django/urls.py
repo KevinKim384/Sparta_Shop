@@ -23,4 +23,5 @@ urlpatterns = [
     path('user_page/', include('user_page.urls')),
     path('log_in/', include('log_in.urls')),
     path('', views.first_page, name = 'first_page'),
+    path('main_page/', include('main_page.urls'))
 ]

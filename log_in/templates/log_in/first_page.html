@@ -2,12 +2,13 @@
 
 {% block contents %}
 <h1> 안녕하세요! </h1>
-{{ form.as_p }}
-<a href = '{% url 'log_in_app:new_user' %}'>
-    <button> 신규 회원가입하기 </button>
-</a><br><br>
+<form action = '{% url 'first_page' %}' method = 'POST'>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type = 'submit' value = '로그인!'>
+</form>
 
-<a href = '{% url 'log_in_app:log_in' %}'> {% comment %} 향후 메인 페이지로 바꿔줘야함 {% endcomment %}
-    <button> 로그인하기 </button>
+<a href = '{% url 'log_in_app:signup' %}'>
+    <button> 신규 회원가입하기 </button>
 </a>
 {% endblock contents %}

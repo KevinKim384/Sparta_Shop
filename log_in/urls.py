@@ -1,7 +1,8 @@
-from django.urls import path
+from django.urls import path, include
 from . import views
 app_name = "log_in_app"
 urlpatterns = [
-    path('new_user/', views.new_user, name = 'new_user'),
-    path('log_in/', views.log_in, name = 'log_in'),
+    path('signup/', views.signup, name = 'signup'),
+    path('log_out/', views.log_out, name = 'log_out')
+    #path('user_page/', include('user_page.urls'), name = 'user_page')
 ]
