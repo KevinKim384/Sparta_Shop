@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block contents %}
+<h1>기본 회원 정보 바꾸기!</h1>
+<h1> 현재 정보에서 바꿔줄 정보로 적어주세요!</h1>
+<form action 'account:login_edit' method = 'POST'>
+    {% csrf_token %}
+    {{ form1.as_p }}
+    {{ form2.as_p }}
+    <button type = 'submit'> 변경하기 </button>
+</form>
+{% endblock contents %}

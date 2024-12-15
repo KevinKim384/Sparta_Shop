@@ -8,10 +8,18 @@
 <body>
     <div class = 'log_in_bar'>
         {% if request.user.is_authenticated %}
-        <form action = {% url 'log_in_app:log_out' %} method = 'POST'>
+        <form action = {% url 'account:log_out' %} method = 'POST'>
             {% csrf_token %}
             <input type= 'submit' value = '로그아웃'>
         </form>
+
+        <a href = '{% url 'account:out_membership' %}'>
+            <button>회원탈퇴</button>
+        </a>
+
+        <a href = '{% url 'account:login_edit' %}'>
+            <button>유저 정보 변경 </button>
+        </a>
         {% else%}
         <a href = {% url 'first_page' %}>로그인</a>
         {% endif %}
