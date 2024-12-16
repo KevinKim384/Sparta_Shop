@@ -7,7 +7,17 @@
 
 
 {% block contents %}
-<h1>완료</h1>
+<a href = "{% url 'product:new_product' %}">
+    <button>새로운 물건 올리기</button>
+</a>
+<h2>올라온 품목 목록들</h2>
+{% for product in products %}
+<hr class="product-divider">
+<a href = '{% url 'product:product_detail' product.pk %}'>
+    <p>{{ product.id }} {{ product.title }}</p>
+</a>
 
+</a>
+{% endfor %}
 <img src = '{% static "main_page/하얀색 옷.jpg" %}' alt ='불러오기 실패'>
 {% endblock contents %}
