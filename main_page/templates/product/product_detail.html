@@ -6,7 +6,12 @@
     </a>
     <h2>물건 상세 페이지</h2>
     <p>제목: {{ new_product.title }}</p>
+
+    {% if new_product.image %}
+    <img src = '{{ new_product.image.url }}' alt = '{{ new_product.image }}'>
+    {% endif%}
     <p>내용: {{ new_product.content }}</p>
+    <p>사진: {{ new_product.image }}</p>
     <p>작성일시: {{ new_product.created_at }}</p>
 
     <hr>
@@ -22,4 +27,20 @@
         {% csrf_token %}
         <input type="submit" value="글 수정하기">
     </form> 
+
+
+    <hr><br><br><br>
+    <h3>댓글<h3>
+    <form action = '{% url 'product:comments' new_product.pk %}' method = 'POST'>
+        {% csrf_token %}
+        {{ comment_form.as_p }}
+        <input type = 'submit' value = '작성 완료'>
+    </form>
+
+    {% for comment in comments %}
+    <ul>
+        <li> 댓글: {{ comment.content }} / 작성 시간: {{ comment.created_at}} </li>
+    </ul>
+    {% endfor %}
+
 {% endblock contents %}

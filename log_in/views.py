@@ -5,7 +5,7 @@ from django.contrib.auth import logout as auth_logout #이름 부분은 자유
 from django.views.decorators.http import require_POST
 from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm, UserChangeForm
 from django.views.decorators.http import require_http_methods
-from log_in.forms import CustomUserUpdate
+from .forms import CustomUserUpdate, CustumUserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import update_session_auth_hash
 
@@ -32,13 +32,13 @@ def log_out(request):
 @require_http_methods(['GET', 'POST'])
 def signup(request):
     if request.method == "POST":
-        form = UserCreationForm(request.POST)
+        form = CustumUserCreationForm(request.POST)
         if form.is_valid():
             user = form.save()
             auth_login(request, user)
             return redirect('/main_page/')
     else:
-        form = UserCreationForm()
+        form = CustumUserCreationForm()
     context = {
         'form' : form
         }

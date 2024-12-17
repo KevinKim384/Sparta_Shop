@@ -2,7 +2,7 @@
 
 {% block contents %}
 <h1> 새로운 중고 아이템 올리기! </h1>
-<form action = '{% url 'product:save_product' %}' method = 'POST'>
+<form action = '{% url 'product:save_product' %}' method = 'POST' enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit"> 등록 </button>
